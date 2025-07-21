@@ -203,7 +203,7 @@ export default function JournalEntryPage() {
         </h1>
 
         {isLoading && (
-          <BarLoader className="mb-4" width={"100%"} color="orange" />
+          <BarLoader className="mb-4" width={"100%"} color="blue" />
         )}
 
         <div className="space-y-2">
@@ -301,13 +301,13 @@ export default function JournalEntryPage() {
                   <SelectValue placeholder="Choose a collection..." />
                 </SelectTrigger>
                 <SelectContent>
-                  {collections?.map((collection) => (
+                  {(Array.isArray(collections) ? collections : collections?.data)?.map((collection) => (
                     <SelectItem key={collection.id} value={collection.id}>
                       {collection.name}
                     </SelectItem>
                   ))}
                   <SelectItem value="new">
-                    <span className="text-orange-600">
+                    <span className="text-blue-600">
                       + Create New Collection
                     </span>
                   </SelectItem>

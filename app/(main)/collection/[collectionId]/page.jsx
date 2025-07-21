@@ -22,7 +22,7 @@ export default async function CollectionPage({ params }) {
           {collection && (
             <DeleteCollectionDialog
               collection={collection}
-              entriesCount={entries.data.entries.length}
+              entriesCount={(entries?.success ? entries?.data?.entries : entries?.entries)?.length || 0}
             />
           )}
         </div>
@@ -32,7 +32,7 @@ export default async function CollectionPage({ params }) {
       </div>
 
       {/* Client-side Filters Component */}
-      <JournalFilters entries={entries.data.entries} />
+      <JournalFilters entries={(entries?.success ? entries?.data?.entries : entries?.entries) || []} />
     </div>
   );
 }

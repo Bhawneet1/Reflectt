@@ -52,7 +52,7 @@ const Collections = ({ collections = [], entriesByCollection }) => {
         )}
 
         {/* User Collections */}
-        {collections?.map((collection) => (
+        {(Array.isArray(collections) ? collections : collections?.data)?.map((collection) => (
           <CollectionPreview
             key={collection.id}
             id={collection.id}

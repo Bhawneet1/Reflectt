@@ -63,7 +63,7 @@ const MoodAnalytics = () => {
           <p className="font-medium">
             {format(parseISO(label), "MMM d, yyyy")}
           </p>
-          <p className="text-orange-600">Average Mood: {payload[0].value}</p>
+          <p className="text-blue-600">Average Mood: {payload[0].value}</p>
           <p className="text-blue-600">Entries: {payload[1].value}</p>
         </div>
       );
@@ -93,7 +93,7 @@ const MoodAnalytics = () => {
       {analytics.data.entries.length === 0 ? (
         <div>
           No Entries Found.{" "}
-          <Link href="/journal/write" className="underline text-orange-400">
+          <Link href="/journal/write" className="underline text-blue-400">
             Write New
           </Link>
         </div>
@@ -180,7 +180,7 @@ const MoodAnalytics = () => {
                       yAxisId="left"
                       type="monotone"
                       dataKey="averageScore"
-                      stroke="#f97316"
+                      stroke="#3b82f6"
                       name="Average Mood"
                       strokeWidth={2}
                     />

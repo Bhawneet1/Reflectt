@@ -57,9 +57,25 @@ export async function createCollection(data) {
       throw new Error("Request blocked");
     }
 
-    const user = await db.user.findUnique({
-      where: { clerkUserId: userId },
-    });
+    // Add retry logic for database connection issues
+    let retries = 3;
+    let user = null;
+    
+    while (retries > 0 && !user) {
+      try {
+        user = await db.user.findUnique({
+          where: { clerkUserId: userId },
+        });
+      } catch (dbError) {
+        console.error(`Database connection attempt ${4 - retries} failed:`, dbError);
+        retries--;
+        if (retries === 0) {
+          throw new Error("Database connection failed. Please try again.");
+        }
+        // Wait before retrying
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
 
     if (!user) {
       throw new Error("User not found");
@@ -76,6 +92,7 @@ export async function createCollection(data) {
     revalidatePath("/dashboard");
     return collection;
   } catch (error) {
+    console.error("Collection creation error:", error);
     throw new Error(error.message);
   }
 }

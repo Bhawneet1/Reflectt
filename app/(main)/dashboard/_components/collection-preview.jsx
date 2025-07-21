@@ -7,8 +7,8 @@ import { getMoodById } from "@/app/lib/moods";
 
 const colorSchemes = {
   unorganized: {
-    bg: "bg-amber-100 hover:bg-amber-50",
-    tab: "bg-amber-200 group-hover:bg-amber-300",
+    bg: "bg-indigo-100 hover:bg-indigo-50",
+    tab: "bg-indigo-200 group-hover:bg-indigo-300",
   },
   collection: {
     bg: "bg-blue-100 hover:bg-blue-50",
@@ -54,7 +54,7 @@ const CollectionPreview = ({
           <div className="h-12 w-12 rounded-full bg-gray-200 group-hover:bg-gray-300 flex items-center justify-center">
             <Plus className="h-6 w-6 text-gray-600" />
           </div>
-          <p className="text-gray-600 font-medium">Create New Collection</p>
+          <p className="text-blue-600 font-medium">Create New Collection</p>
         </div>
       </button>
     );

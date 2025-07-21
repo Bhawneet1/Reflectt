@@ -8,12 +8,12 @@ export default function WriteLayout({ children }) {
       <div>
         <Link
           href="/dashboard"
-          className="text-sm text-orange-600 hover:text-orange-700 cursor-pointer"
+                      className="text-sm text-blue-600 hover:text-blue-700 cursor-pointer"
         >
           ← Back to Dashboard
         </Link>
       </div>
-      <Suspense fallback={<BarLoader color="orange" width={"100%"} />}>
+      <Suspense fallback={<BarLoader color="blue" width={"100%"} />}>
         {children}
       </Suspense>
     </div>
